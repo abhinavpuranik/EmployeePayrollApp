@@ -6,6 +6,8 @@
 
 
 package com.seveneleven.registration;
+import com.seveneleven.model.Session;
+import com.seveneleven.utility.*;
 import java.io.IOException;
 import java.util.Scanner;
 public class EmployeeRegistrationApp {
@@ -39,6 +41,22 @@ public class EmployeeRegistrationApp {
 			
 			System.out.println(employee.toString());
 			employee.persist();
+			
+			AuthenticationService auth = new AuthenticationService();
+
+	        Session session = auth.login();
+
+	        if (session != null) {
+
+	            System.out.println(session);
+
+	            if (session.isExpired()) {
+	                System.out.println("Session expired.");
+	            } else {
+	                System.out.println("Session still valid.");
+	            }
+	        }
+
 			
 			
 		}catch(ValidationException e) {
