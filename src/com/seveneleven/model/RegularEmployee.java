@@ -1,3 +1,8 @@
+
+/* @author Developer
+ * @version 4.0
+ * 
+ */
 package com.seveneleven.model;
 
 import com.seveneleven.utility.PasswordUtil;

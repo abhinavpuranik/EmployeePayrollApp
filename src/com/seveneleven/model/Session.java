@@ -1,3 +1,8 @@
+
+/* @author Developer
+ * @version 2.0
+ * Session managing after login
+ */
 package com.seveneleven.model;
 
 public class Session {

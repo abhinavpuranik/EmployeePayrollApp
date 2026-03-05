@@ -1,15 +1,18 @@
 /* @author Developer
  * @version 1.0
- * Entry point of UC1
+ * Entry point
  */
 
 package com.seveneleven.registration;
 
+import com.seveneleven.dashboard.Dashboard;
+import com.seveneleven.dashboard.DashboardFactory;
 import com.seveneleven.model.Payslip;
 import com.seveneleven.model.Session;
 import com.seveneleven.utility.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EmployeeRegistrationApp {
@@ -134,6 +137,25 @@ public class EmployeeRegistrationApp {
 
                  System.out.println("Error during payslip download.");
              }
+             
+             System.out.println("\n=== USE CASE 5: DASHBOARD DISPLAY ===");
+
+             Scanner sc2 = new Scanner(System.in);
+
+             System.out.print("Enter Role (EMPLOYEE/MANAGER): ");
+             String role = sc2.nextLine();
+
+             ArrayList<Payslip> payslips = new ArrayList<>();
+
+             payslips.add(new Payslip("EMP-0001","Abhishek","Jan",30000));
+             payslips.add(new Payslip("EMP-0001","Abhishek","Feb",32000));
+             payslips.add(new Payslip("EMP-0001","Abhishek","Mar",33000));
+             payslips.add(new Payslip("EMP-0001","Abhishek","Apr",34000));
+
+             Dashboard dashboard = DashboardFactory.getDashboard(role);
+
+             dashboard.display(payslips, employee);
+             
             }
 
         } catch (ValidationException e) {
