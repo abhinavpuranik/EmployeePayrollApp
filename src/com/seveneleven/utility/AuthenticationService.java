@@ -1,3 +1,8 @@
+
+/* @author Developer
+ * @version 3.0
+ * 
+ */
 package com.seveneleven.utility;
 
 import java.util.*;

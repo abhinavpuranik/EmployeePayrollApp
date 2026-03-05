@@ -79,6 +79,14 @@ public class Employee {
 		
 	}
 	
+	public String getEmpId() {
+	    return empId;
+	}
+
+	public String getName() {
+	    return name;
+	}
+	
 	
 	
 	

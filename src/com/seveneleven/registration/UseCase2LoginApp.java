@@ -1,4 +1,8 @@
-package com.seveneleven.registration;
+
+/* @author Developer
+ * @version 2.0
+ * 
+ */package com.seveneleven.registration;
 import com.seveneleven.model.Session;
 import com.seveneleven.utility.*;
 
