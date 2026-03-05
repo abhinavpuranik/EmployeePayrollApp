@@ -10,6 +10,7 @@ import com.seveneleven.dashboard.DashboardFactory;
 import com.seveneleven.model.Payslip;
 import com.seveneleven.model.Session;
 import com.seveneleven.utility.*;
+import com.seveneleven.validation.ValidationService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -80,6 +81,8 @@ public class EmployeeRegistrationApp {
 
                 System.out.println("Enter Allowances: ");
                 double allowances = sc.nextDouble();
+                
+                sc.nextLine();
 
                 PayrollService payrollService = new PayrollService();
 
@@ -156,6 +159,39 @@ public class EmployeeRegistrationApp {
 
              dashboard.display(payslips, employee);
              
+            }
+            
+            System.out.println("\n=== USE CASE 6: INPUT VALIDATION ===");
+
+            try {
+
+             
+                System.out.println("Enter Email: ");
+                String email2 = sc.nextLine();
+                
+                System.out.println("Enter Employee ID (EMP-XXXX): ");
+                String empId2 = sc.nextLine();
+
+
+                System.out.println("Enter Phone Number: ");
+                String phone2 = sc.nextLine();
+
+                System.out.println("Create Password: ");
+                String password2 = sc.nextLine();
+
+                ValidationService.validateEmployeeId(empId2);
+                ValidationService.validateEmail(email2);
+                ValidationService.validatePhone(phone2);
+                ValidationService.validatePassword(password2);
+
+                System.out.println("\nAll inputs are VALID. Registration/Login can proceed.");
+
+            }
+            catch(ValidationException ex) {
+
+                System.out.println("\nValidation Failed:");
+                System.out.println(ex.getMessage());
+
             }
 
         } catch (ValidationException e) {
