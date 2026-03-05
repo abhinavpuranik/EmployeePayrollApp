@@ -90,6 +90,50 @@ public class EmployeeRegistrationApp {
                 );
 
                 System.out.println(payslip);
+                
+                System.out.println("\n=== USE CASE 4: PAYSLIP PRINT / DOWNLOAD ===");
+
+             // Clone
+             Payslip cloned = (Payslip) payslip.clone();
+
+             // Verify equality
+             if (payslip.equals(cloned)) {
+                 System.out.println("Verified: Download copy is equal to original.");
+             }
+
+             System.out.println("Original hashcode : " + payslip.hashCode());
+             System.out.println("Cloned   hashcode : " + cloned.hashCode());
+
+             try {
+
+                 DownloadToken token = new DownloadToken();
+
+                 if (token.isExpired()) {
+
+                     System.out.println("Download token expired.");
+                     return;
+                 }
+
+                 FileService fs = new FileService();
+
+                 String textFile = fs.savePayslipAsText(cloned);
+
+                 String pdfFile = fs.savePayslipAsPdf(cloned);
+
+                 System.out.println("\nPayslip Download Successful.");
+
+                 System.out.println("Saved as text file: " + textFile);
+
+                 System.out.println("Saved as PDF file : " + pdfFile);
+
+                 System.out.println("\nPrinted Payslip ...");
+
+                 System.out.println(cloned);
+
+             } catch (Exception e) {
+
+                 System.out.println("Error during payslip download.");
+             }
             }
 
         } catch (ValidationException e) {
